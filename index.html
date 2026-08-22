@@ -38,7 +38,7 @@ button{font-family:inherit;font-size:16px;cursor:pointer;border:none;background:
 .btn.sec{background:var(--card);color:var(--ink);border:2px solid var(--line);font-weight:800;font-size:16px;
   text-shadow:none}
 .btn.sm{padding:12px;font-size:15px;border-radius:16px}
-.card{background:var(--card);border:2px solid var(--line);border-radius:var(--r);padding:16px;box-shadow:var(--shadow)}
+.card{background:var(--card);border:2px solid var(--line);border-radius:var(--r);padding:15px;box-shadow:var(--shadow)}
 .row{display:flex;gap:10px;align-items:center}
 .sp{flex:1}
 .muted{color:var(--sub);font-size:13px}
@@ -75,32 +75,46 @@ button{font-family:inherit;font-size:16px;cursor:pointer;border:none;background:
 .navgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
 
 /* ---- session ---- */
+/* 학습 중에는 화면을 고정하고 스크롤 없이 한 화면에 담는다 */
+.wrap.sessview{height:100vh;height:100dvh;min-height:0;display:flex;flex-direction:column;
+  overflow:hidden;padding-bottom:0}
+.qarea{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;padding-bottom:8px}
+.fbbar{position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--card);
+  border-top:2px solid var(--line);box-shadow:0 -8px 24px rgba(30,90,130,.14);
+  padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+  max-height:46dvh;overflow-y:auto;animation:slideUp .2s ease-out}
+.fbbar:empty{display:none}
+.fbbar .inner{max-width:488px;margin:0 auto}
+@keyframes slideUp{from{transform:translateY(101%)}to{transform:translateY(0)}}
+.btnrow{display:flex;gap:8px;align-items:stretch}
+.btnrow .btn{flex:1}
+.btnrow .btn.mini{flex:0 0 auto;padding:12px 16px;font-size:15px}
 .prog{height:12px;background:var(--line);border-radius:99px;overflow:hidden;flex:1}
 .prog i{display:block;height:100%;background:var(--prog);transition:width .3s}
 .hearts{font-size:15px;letter-spacing:1px}
 .qtag{display:inline-block;font-size:12px;font-weight:800;padding:6px 13px;border-radius:99px;
   background:var(--line);color:var(--honey-d);margin-bottom:14px}
-.qbox{min-height:230px;display:flex;flex-direction:column;justify-content:center;text-align:center}
-.qword{font-size:38px;font-weight:800;letter-spacing:-.5px;word-break:break-word}
-.qmean{font-size:26px;font-weight:800;line-height:1.35}
-.qhint{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:28px;font-weight:800;
-  letter-spacing:5px;color:var(--honey-d);margin:16px 0 4px;word-break:break-all}
+.qbox{min-height:132px;display:flex;flex-direction:column;justify-content:center;text-align:center}
+.qword{font-size:34px;font-weight:800;letter-spacing:-.5px;word-break:break-word}
+.qmean{font-size:23px;font-weight:800;line-height:1.35}
+.qhint{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:25px;font-weight:800;
+  letter-spacing:4px;color:var(--honey-d);margin:12px 0 2px;word-break:break-all}
 .qsub{font-size:15px;color:var(--sub);margin-top:8px}
-.spk{width:96px;height:96px;border-radius:50%;background:linear-gradient(140deg,#3fa9d8,#3bbcab);
-  color:#fff;font-size:40px;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;
+.spk{width:80px;height:80px;border-radius:50%;background:linear-gradient(140deg,#3fa9d8,#3bbcab);
+  color:#fff;font-size:33px;display:flex;align-items:center;justify-content:center;margin:0 auto 6px;
   box-shadow:var(--shadow)}
 .spk:active{transform:scale(.95)}
-.opts{display:grid;gap:8px;margin-top:14px}
-.opt{padding:16px;border-radius:18px;border:2px solid var(--line);background:var(--card);
-  text-align:left;font-size:17px;font-weight:700;transition:.12s;box-shadow:var(--shadow)}
+.opts{display:grid;gap:7px;margin-top:12px}
+.opt{padding:14px 15px;border-radius:16px;border:2px solid var(--line);background:var(--card);
+  text-align:left;font-size:16px;font-weight:700;transition:.12s;box-shadow:var(--shadow)}
 .opt:active{transform:scale(.99)}
 .opt.ok{background:var(--ok-bg);border-color:var(--ok);color:var(--ok);font-weight:800}
 .opt.ng{background:var(--ng-bg);border-color:var(--ng);color:var(--ng)}
-input.ans{width:100%;padding:16px;border-radius:18px;border:2.5px solid var(--line);background:var(--card);
-  color:var(--ink);font-size:25px;font-weight:700;text-align:center;letter-spacing:2px;
+input.ans{width:100%;padding:14px;border-radius:16px;border:2.5px solid var(--line);background:var(--card);
+  color:var(--ink);font-size:23px;font-weight:700;text-align:center;letter-spacing:2px;
   font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
 input.ans:focus{outline:none;border-color:var(--honey)}
-.fb{margin-top:14px;padding:16px;border-radius:var(--r);font-size:15px;line-height:1.6;border:2px solid currentColor}
+.fb{padding:13px 15px;border-radius:18px;font-size:15px;line-height:1.55;border:2px solid currentColor}
 .fb.ok{background:var(--ok-bg);color:var(--ok)}
 .fb.ng{background:var(--ng-bg);color:var(--ng)}
 .fb b{font-size:19px;letter-spacing:1px;font-family:ui-monospace,Menlo,monospace}
@@ -383,6 +397,7 @@ function finish(){
 let view="home", listQ="", listFilter="all";
 function render(){
   const a=document.getElementById("app");
+  a.className = "wrap" + (view==="sess" ? " sessview" : "");
   a.innerHTML = view==="home"?vHome(): view==="sess"?vSess(): view==="result"?vResult()
               : view==="wrong"?vWrong(): view==="list"?vList(): vSet();
   window.scrollTo(0,0);
@@ -479,11 +494,14 @@ function vSess(){
       (mode==="exam"? '<div class="timer" id="tm"></div>':'')+
       '</div>'+
       '<input class="ans" id="ans" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" '+
-        'onkeydown="if(event.key===\'Enter\')submitSpell()" placeholder="여기에 써 보세요">'+
-      '<div style="height:10px"></div><button class="btn" onclick="submitSpell()">확인</button>';
+        'onkeydown="if(event.key===\'Enter\')submitSpell()" placeholder="여기에 써 보세요">';
   }
-  return head+'<span class="qtag">'+tag+(q.retry?' · 다시':'')+'</span>'+
-    '<div class="card pop">'+body+'</div><div id="fb"></div>';
+  const bar = ISMC(q.type) ? ''
+    : '<div class="inner"><button class="btn" onclick="submitSpell()">확인</button></div>';
+  return head+
+    '<div class="qarea"><span class="qtag">'+tag+(q.retry?' · 다시':'')+'</span>'+
+    '<div class="card pop">'+body+'</div></div>'+
+    '<div id="fb" class="fbbar">'+bar+'</div>';
 }
 function replay(no){
   if(mode==="exam"){ if(replays>=1){ toast("다시 듣기를 다 썼어요"); return; } replays++; }
@@ -503,10 +521,15 @@ function pickMC(pick,ansNo){
     else if(n===pick&&!ok)b.classList.add("ng"); b.onclick=null; });
   beep(ok); grade(ok);
   const w=Q[qi].w;
-  document.getElementById("fb").innerHTML='<div class="fb '+(ok?'ok':'ng')+'">'+
-    (ok? smile(34)+' 딩동댕! 맞았어요 ':'앗, 아쉬워요! ')+'<b>'+h(w.word)+'</b> · '+h(w.meaning)+
-    '<div style="margin-top:8px"><button class="btn sm" onclick="say(\''+w.word+'\','+w.no+')">🔊 발음 듣기</button></div></div>'+
-    '<div style="height:10px"></div><button class="btn" onclick="next()">다음</button>';
+  document.getElementById("fb").innerHTML='<div class="inner">'+
+    '<div class="fb '+(ok?'ok':'ng')+'">'+
+      (ok? smile(30)+' 딩동댕! 맞았어요 ':'앗, 아쉬워요! ')+'<b>'+h(w.word)+'</b> · '+h(w.meaning)+
+    '</div><div style="height:9px"></div>'+
+    '<div class="btnrow">'+
+      '<button class="btn sec mini" onclick="say(\''+w.word+'\','+w.no+')">🔊</button>'+
+      '<button class="btn" onclick="next()">다음</button>'+
+    '</div></div>';
+  const sel=document.querySelector("#opts .opt.ok"); if(sel) sel.scrollIntoView({block:"nearest"});
 }
 function submitSpell(timeout){
   clearInterval(tmr);
@@ -515,14 +538,18 @@ function submitSpell(timeout){
   const s=st(w.no); if(!ok) s.miss=val||"(무응답)";
   beep(ok); grade(ok);
   inp.disabled=true;
-  document.getElementById("fb").innerHTML='<div class="fb '+(ok?'ok':'ng')+'">'+
-    (ok? smile(34)+' 딩동댕! 맞았어요' : (timeout?'앗, 시간이 다 됐어요':'앗, 아쉬워요!') +
+  document.getElementById("fb").innerHTML='<div class="inner">'+
+    '<div class="fb '+(ok?'ok':'ng')+'">'+
+    (ok? smile(30)+' 딩동댕! 맞았어요' : (timeout?'앗, 시간이 다 됐어요':'앗, 아쉬워요!') +
       '<div class="diff" style="margin-top:8px">'+diffHtml(val||"", w.word)+'</div>'+
       '<div style="margin-top:6px">정답: <b>'+h(w.word)+'</b>'+(w.syl!==w.word?' ('+h(w.syl)+')':'')+'</div>')+
-    '<div style="margin-top:6px">'+posK(w.pos)+' '+h(w.meaning)+'</div>'+
-    '<div class="muted" style="margin-top:6px">'+h(w.ex)+'</div>'+
-    '<div style="margin-top:8px"><button class="btn sm" onclick="say(\''+w.word+'\','+w.no+')">🔊 다시 듣기</button></div></div>'+
-    '<div style="height:10px"></div><button class="btn" onclick="next()">다음</button>';
+    '<div style="margin-top:5px">'+posK(w.pos)+' '+h(w.meaning)+'</div>'+
+    '<div class="muted" style="margin-top:5px">'+h(w.ex)+'</div>'+
+    '</div><div style="height:9px"></div>'+
+    '<div class="btnrow">'+
+      '<button class="btn sec mini" onclick="say(\''+w.word+'\','+w.no+')">🔊</button>'+
+      '<button class="btn" onclick="next()">다음</button>'+
+    '</div></div>';
   if(!ok) say(w.word,w.no);
 }
 
